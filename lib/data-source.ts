@@ -5,11 +5,12 @@ import { Post } from '@lib/entities/post.entity';
 import { Comment } from '@lib/entities/comment.entity';
 
 dotenv.config({ path: '../.env'});
-
+export const DB_URL = process.env.DB_URL as string;
 
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
-  url: process.env.DB_URL,
+  url: DB_URL,
   entities: [User, Post, Comment],
   synchronize: true,
 };
+

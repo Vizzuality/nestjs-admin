@@ -16,3 +16,5 @@ export class Comment {
   @ManyToOne(() => Post, (post) => post.comments)
   post: Post;
 }
+
+
