@@ -28,6 +28,9 @@ importers:
       express-session:
         specifier: ^1.17.3
         version: 1.18.0
+      lib:
+        specifier: link:../lib
+        version: link:../lib
       pg:
         specifier: latest
         version: 8.12.0
