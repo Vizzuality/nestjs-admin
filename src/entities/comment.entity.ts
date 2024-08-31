@@ -1,9 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+  BaseEntity,
+} from 'typeorm';
 import { User } from './user.entity.js';
 import { Post } from './post.entity.js';
 
-@Entity({ name: 'comments'})
-export class Comment {
+@Entity({ name: 'comments' })
+export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,7 +28,4 @@ export class Comment {
 
   @JoinColumn()
   postId: number;
-
 }
-
-
