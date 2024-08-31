@@ -24,7 +24,6 @@ const componentLoader = new ComponentLoader();
           adminJsOptions: {
             rootPath: '/admin',
             componentLoader,
-            // Rename "organizations" to your table name or set "resources" to []
             resources: [
               {
                 resource: User,
