@@ -1,0 +1,34 @@
+name: Deploy to Railway
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+
+      - name: Node setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '9'
+
+      - name: Install packages
+        run: pnpm install
+
+      - name: Install Railway
+        run: pnpm i -g @railway/cli
+
+      - name: Deploy
+        run: railway up --service nestjs-admin
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
