@@ -1,11 +1,14 @@
 import { Global, Module } from '@nestjs/common';
-import { Adapter, Database, Resource } from '@adminjs/sql';
 import { AdminModule } from '@adminjs/nestjs';
 import AdminJS from 'adminjs';
+import * as AdminJSTypeorm from '@adminjs/typeorm';
+import { User } from '../../entities/user.entity.js';
+import { Post } from '../../entities/post.entity.js';
+import { Comment } from '../../entities/comment.entity.js';
 
 AdminJS.registerAdapter({
-  Database,
-  Resource,
+  Database: AdminJSTypeorm.Database,
+  Resource: AdminJSTypeorm.Resource,
 });
 
 @Global()
@@ -13,21 +16,11 @@ AdminJS.registerAdapter({
   imports: [
     AdminModule.createAdminAsync({
       useFactory: async () => {
-        const options = {
-          connectionString: process.env.DATABASE_URL as string,
-          database: process.env.DATABASE_NAME as string,
-        };
-        const db = await new Adapter('postgresql', options).init();
-
         return {
           adminJsOptions: {
             rootPath: '/admin',
             // Rename "organizations" to your table name or set "resources" to []
-            resources: [
-              db.table('users_test'),
-              db.table('posts'),
-              db.table('comments'),
-            ],
+            resources: [User, Post, Comment],
           },
           auth: {
             authenticate: async (email, password) => {

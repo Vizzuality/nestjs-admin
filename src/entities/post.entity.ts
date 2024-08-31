@@ -27,6 +27,6 @@ export class Post extends BaseEntity {
   @OneToMany('Comment', (comment: Comment) => comment.post)
   comments: Comment[];
 
-  @JoinColumn()
+  @JoinColumn({ name: 'userId' })
   userId: number;
 }
