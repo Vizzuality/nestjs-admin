@@ -1,8 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { Post } from './post.entity';
-import { Comment } from './comment.entity';
+import { Post } from './post.entity.js';
+import { Comment } from './comment.entity.js';
 
-@Entity({ name: 'users'})
+@Entity({ name: 'users_test'})
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
@@ -13,9 +13,10 @@ export class User {
   @Column()
   email: string;
 
-  @OneToMany(() => Post, (post) => post.user)
+  @OneToMany('Post', (post: Post) => post.user)
   posts: Post[];
 
-  @OneToMany(() => Comment, (comment) => comment.user)
+  @OneToMany('Comment', (comment: Comment) => comment.user)
   comments: Comment[];
+
 }
