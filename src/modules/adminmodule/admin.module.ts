@@ -13,7 +13,10 @@ AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
 });
 
+// TODO: Override Login component, create custom dashboard
+
 const componentLoader = new ComponentLoader();
+// componentLoader.override('Login', '../components/login.component.tsx');
 
 @Global()
 @Module({
