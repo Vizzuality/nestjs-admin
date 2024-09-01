@@ -12,10 +12,9 @@ AdminJS.registerAdapter({
   Resource: AdminJSTypeorm.Resource,
 });
 
-// TODO: create custom dashboard
-
 const componentLoader = new ComponentLoader();
 componentLoader.override('Login', './components/login.component');
+componentLoader.override('DashboardRoute', './components/dashboard.component');
 
 @Global()
 @Module({
