@@ -5,7 +5,6 @@ import * as AdminJSTypeorm from '@adminjs/typeorm';
 import { User } from '../../entities/user.entity.js';
 import { Post } from '../../entities/post.entity.js';
 import { Comment } from '../../entities/comment.entity.js';
-import * as process from 'node:process';
 import importExportFeature from '@adminjs/import-export';
 
 AdminJS.registerAdapter({
@@ -43,11 +42,11 @@ const componentLoader = new ComponentLoader();
             cookiePassword: process.env.USERNAME,
             cookieName: process.env.PASSWORD,
           },
-          // sessionOptions: {
-          //   resave: true,
-          //   saveUninitialized: true,
-          //   secret: 'secret',
-          // },
+          sessionOptions: {
+            resave: true,
+            saveUninitialized: true,
+            secret: 'secret',
+          },
         };
       },
     }),
