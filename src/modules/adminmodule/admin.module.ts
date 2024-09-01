@@ -43,11 +43,11 @@ const componentLoader = new ComponentLoader();
             cookiePassword: process.env.USERNAME,
             cookieName: process.env.PASSWORD,
           },
-          sessionOptions: {
-            resave: true,
-            saveUninitialized: true,
-            secret: 'secret',
-          },
+          // sessionOptions: {
+          //   resave: true,
+          //   saveUninitialized: true,
+          //   secret: 'secret',
+          // },
         };
       },
     }),
