@@ -9,6 +9,7 @@ import { Comment } from './entities/comment.entity.js';
 import { Database, Resource } from '@adminjs/sql';
 import AdminJS from 'adminjs';
 import { AdminBaseModule } from './modules/adminmodule/admin.module.js';
+import { UsersModule } from './modules/users/users.module.js';
 AdminJS.registerAdapter({
   Database,
   Resource,
@@ -28,6 +29,7 @@ AdminJS.registerAdapter({
       entities: [User, Post, Comment],
     }),
     AdminBaseModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
