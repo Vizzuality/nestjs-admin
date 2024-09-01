@@ -15,7 +15,7 @@ AdminJS.registerAdapter({
 // TODO: Override Login component, create custom dashboard
 
 const componentLoader = new ComponentLoader();
-// componentLoader.override('Login', '../components/login.component.tsx');
+componentLoader.override('Login', './login.component');
 
 @Global()
 @Module({
